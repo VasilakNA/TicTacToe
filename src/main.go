@@ -1,8 +1,8 @@
 package main 
 
 import ( 
-"fmt" 
-) 
+	"fmt" 
+	) 
 
 const ( 
 PLAYER_X = 1 
@@ -22,8 +22,9 @@ var x, y int
 fmt.Scan(&x, &y) 
 x-- 
 y--
-if (x>2 || x<0 || y>2 || y<0 || grid[x][y] == 1 || grid[x][y] == 2) { 
+if (x>2 || x<0 || y>2 || y<0 || grid[y][x] == 1 || grid[y][x] == 2) { 
 i--
+fmt.Println("!!!incorrect!!!") 
 continue 
 } else { 
 if (isX) { 
@@ -38,12 +39,16 @@ isX = !isX
 fmt.Println("Grid: ") 
 drawGrid() 
 
-if (checkWin()) { 
-fmt.Println("Win") 
+if (checkWin()) {  
+if(grid[y][x] == 1) {
+	fmt.Println("X-Winner!") 
+} else {
+	fmt.Println("O-Winner!") 
+}
 return 
 } 
 } 
-} 
+}
 
 
 func drawGrid() { 
